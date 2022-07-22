@@ -7,11 +7,11 @@ namespace scripts.entities
     {
         private int _health { get; set; } public int Health { get => _health; }
         private int _score { get; set; } public int Score { get => _score; }
+        private int _games { get; set; } public int Games { get => _games; }
+        public double FinalScore { get => _time.Seconds / _games * _score; }
         private DateTime start { get; set; }
         private TimeSpan _time { get; set; } public TimeSpan Seconds { get => _time; }
         private bool gg { get; set; } public bool GG { get => gg; }
-        private int _games { get; set; } public int Games { get => _games; }
-        public double FinalScore { get => _time.Seconds / _games * _score; }
 
         // Start is called before the first frame update
         void Start()
@@ -35,6 +35,7 @@ namespace scripts.entities
         {
             _score += score;
             _games++;
+            SceneMaster.Instance.ChangeGame();
         }
         
     }
